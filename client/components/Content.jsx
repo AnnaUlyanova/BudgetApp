@@ -1,7 +1,7 @@
 import React from 'react'
 
 import About from './About'
-import DailyExpences from './DailyExpences'
+import DailyExpenses from './DailyExpenses'
 import Reports from './Reports'
 import SavingGoals from './SavingGoals'
 
