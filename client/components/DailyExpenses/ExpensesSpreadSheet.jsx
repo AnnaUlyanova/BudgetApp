@@ -4,14 +4,16 @@ const ExpensesSpreadSheet = (props) => {
   return (
     <div>
       <table>
-        <tr>
-          <th>Category</th>
-          <th>Spent</th>
-        </tr>
-        <tr>
-          <th>Grocery</th>
-          <th>$100</th>
-        </tr>
+        <tbody>
+          <tr>
+            <th>Category</th>
+            <th>Spent</th>
+          </tr>
+          <tr>
+            <td>Grocery</td>
+            <td>$100</td>
+          </tr>
+        </tbody>
       </table>
     </div>
   )

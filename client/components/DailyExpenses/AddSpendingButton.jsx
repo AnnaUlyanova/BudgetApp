@@ -2,7 +2,7 @@ import React from 'react'
 
 const AddSpending = (props) => {
   return (
-   <button>Add Spending</button>
+   <button onClick={props.open} className='bn btn-default'>Add Spending</button>
   )
 }
 
