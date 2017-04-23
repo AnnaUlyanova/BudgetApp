@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { Modal, Button, ControlLabel, FormControl } from 'react-bootstrap'
+
 import ExpensesSpreadSheet from './ExpensesSpreadSheet'
 import AddCategoryButton from './AddCategoryButton'
 import AddSpendingButton from './AddSpendingButton'
@@ -8,21 +10,15 @@ import AddSpendingModal from './AddSpendingModal'
 export default React.createClass({
 
   getInitialState() {
-    return {
-      showAddSpending: false
-    }
+    return { showModal: false };
   },
 
-  closeAddSpending() {
-    this.setState({
-      showAddSpending: false
-    })
+  close() {
+    this.setState({ showModal: false });
   },
 
-  openAddSpending() {
-    this.setState({
-      showAddSpending: true
-    })
+  open() {
+    this.setState({ showModal: true });
   },
 
   render() {
@@ -31,14 +27,28 @@ export default React.createClass({
         <h1>My Daily Expenses</h1>
         <div>
           <ExpensesSpreadSheet />
-          <AddCategoryButton />
-          <AddSpendingButton open={this.openAddSpending}/>
-          <AddSpendingModal
-          close={this.closeAddSpending}
-          show={this.state.showAddSpending}
-          />
+          <Button onClick={this.open}>Add Spending</Button>
+            <Modal show={this.state.showModal} onHide={this.close}>
+              <Modal.Header closeButton>
+                <Modal.Title>Add New Spending</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <div>
+                  <ControlLabel>Category</ControlLabel>
+                  <FormControl model='.newCategory' />
+                </div>
+                <div>
+                  <ControlLabel>Amount</ControlLabel>
+                  <FormControl model='.amount' />
+                </div>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button onClick={this.close}>Close</Button>
+                <Button type='submit'>Add new spending</Button>
+              </Modal.Footer>
+            </Modal>
         </div>
       </div>
-    )
+    );
   }
 })
