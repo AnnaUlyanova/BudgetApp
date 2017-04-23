@@ -10,15 +10,31 @@ import AddSpendingModal from './AddSpendingModal'
 export default React.createClass({
 
   getInitialState() {
-    return { showModal: false };
+    return {
+      showAddSpending: false,
+      showAddCategory: false };
   },
 
-  close() {
-    this.setState({ showModal: false });
+  closeSpending() {
+    this.setState({
+      showAddSpending: false,
+      });
   },
 
-  open() {
-    this.setState({ showModal: true });
+  openSpending() {
+    this.setState({
+      showAddSpending: true });
+  },
+
+  closeCategory() {
+    this.setState({
+      showAddCategory: false,
+      });
+  },
+
+  openCategory() {
+    this.setState({
+      showAddCategory: true });
   },
 
   render() {
@@ -27,26 +43,46 @@ export default React.createClass({
         <h1>My Daily Expenses</h1>
         <div>
           <ExpensesSpreadSheet />
-          <Button onClick={this.open}>Add Spending</Button>
-            <Modal show={this.state.showModal} onHide={this.close}>
+
+          <Button onClick={this.openSpending}>Add Spending</Button>
+
+          <Modal show={this.state.showAddSpending} onHide={this.closeSpending}>
+            <Modal.Header closeButton>
+              <Modal.Title>Add New Spending</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <div>
+                <ControlLabel>Category</ControlLabel>
+                <FormControl model='.newCategory' />
+              </div>
+              <div>
+                <ControlLabel>Amount</ControlLabel>
+                <FormControl model='.amount' />
+              </div>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button onClick={this.close}>Close</Button>
+              <Button type='submit'>Add new spending</Button>
+            </Modal.Footer>
+          </Modal>
+
+          <Button onClick={this.openCategory}>Add Category</Button>
+            <Modal show={this.state.showAddCategory} onHide={this.closeCategory}>
               <Modal.Header closeButton>
-                <Modal.Title>Add New Spending</Modal.Title>
+                <Modal.Title>Add New Category</Modal.Title>
               </Modal.Header>
               <Modal.Body>
                 <div>
                   <ControlLabel>Category</ControlLabel>
                   <FormControl model='.newCategory' />
                 </div>
-                <div>
-                  <ControlLabel>Amount</ControlLabel>
-                  <FormControl model='.amount' />
-                </div>
               </Modal.Body>
               <Modal.Footer>
                 <Button onClick={this.close}>Close</Button>
-                <Button type='submit'>Add new spending</Button>
+                <Button type='submit'>Add new category</Button>
               </Modal.Footer>
             </Modal>
+
         </div>
       </div>
     );
