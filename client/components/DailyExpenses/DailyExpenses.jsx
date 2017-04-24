@@ -53,7 +53,10 @@ export default React.createClass({
             <Modal.Body>
               <div>
                 <ControlLabel>Category</ControlLabel>
-                <FormControl model='.newCategory' />
+                  <FormControl componentClass="select" placeholder="category">
+                   <option value="category 1">Category 1</option>
+                   <option value="category 2">Category 2</option>
+                 </FormControl>
               </div>
               <div>
                 <ControlLabel>Amount</ControlLabel>
@@ -61,7 +64,7 @@ export default React.createClass({
               </div>
             </Modal.Body>
             <Modal.Footer>
-              <Button onClick={this.close}>Close</Button>
+              <Button onClick={this.closeSpending}>Close</Button>
               <Button type='submit'>Add new spending</Button>
             </Modal.Footer>
           </Modal>
@@ -78,7 +81,7 @@ export default React.createClass({
                 </div>
               </Modal.Body>
               <Modal.Footer>
-                <Button onClick={this.close}>Close</Button>
+                <Button onClick={this.closeCategory}>Close</Button>
                 <Button type='submit'>Add new category</Button>
               </Modal.Footer>
             </Modal>
