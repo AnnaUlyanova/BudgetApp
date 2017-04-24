@@ -5,6 +5,8 @@
   "main": "server/server.js",
   "scripts": {
     "build": "webpack",
+    "knex": "knex",
+    "migrate": "knex migrate:latest",
     "watch": "webpack --watch",
     "start": "webpack-dev-server --hot --inline --content-base server/public/",
     "server": "node-dev server/server",
