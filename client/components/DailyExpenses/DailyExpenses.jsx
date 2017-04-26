@@ -38,6 +38,11 @@ export default React.createClass({
       showAddCategory: true });
   },
 
+  // handleSubmit(event) {
+  //   event.preventDefault()
+  //   window.alert('Hi')
+  // },
+
   render() {
     return (
       <div>
@@ -72,7 +77,7 @@ export default React.createClass({
 
           <Button onClick={this.openCategory}>Add Category</Button>
             <Modal show={this.state.showAddCategory} onHide={this.closeCategory}>
-              <form action="/" method="post">
+              <form onSubmit={this.props.addNewCategory}>
                 <Modal.Header closeButton>
                   <Modal.Title>Add New Category</Modal.Title>
                 </Modal.Header>

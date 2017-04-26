@@ -10,7 +10,7 @@ import reducers from './reducers'
 
 import App from './components/App'
 import Content from './components/Content'
-import DailyExpenses from './components/DailyExpenses'
+import DailyExpenses from './containers/DailyExpensesContainer'
 import Reports from './components/Reports'
 import SavingGoal from './components/SavingGoals'
 import About from './components/About'
