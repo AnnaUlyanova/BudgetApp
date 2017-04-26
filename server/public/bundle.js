@@ -28942,17 +28942,22 @@
 /* 267 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
 	exports.default = function () {
 	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 	  var action = arguments[1];
 	
 	  switch (action.type) {
+	    case 'ADD_CATEGORY_SUCCESS':
+	      return Object.assign({}, state, _defineProperty({}, action.category.id, action.category));
+	
 	    default:
 	      return state;
 	  }
@@ -29191,7 +29196,8 @@
 	  getInitialState: function getInitialState() {
 	    return {
 	      showAddSpending: false,
-	      showAddCategory: false };
+	      showAddCategory: false,
+	      input: {} };
 	  },
 	  closeSpending: function closeSpending() {
 	    this.setState({
@@ -29302,40 +29308,44 @@
 	          _reactBootstrap.Modal,
 	          { show: this.state.showAddCategory, onHide: this.closeCategory },
 	          _react2.default.createElement(
-	            _reactBootstrap.Modal.Header,
-	            { closeButton: true },
+	            'form',
+	            { onSubmit: this.onSubmit },
 	            _react2.default.createElement(
-	              _reactBootstrap.Modal.Title,
-	              null,
-	              'Add New Category'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            _reactBootstrap.Modal.Body,
-	            null,
-	            _react2.default.createElement(
-	              'div',
-	              null,
+	              _reactBootstrap.Modal.Header,
+	              { closeButton: true },
 	              _react2.default.createElement(
-	                _reactBootstrap.ControlLabel,
+	                _reactBootstrap.Modal.Title,
 	                null,
-	                'Category'
-	              ),
-	              _react2.default.createElement(_reactBootstrap.FormControl, { model: '.newCategory' })
-	            )
-	          ),
-	          _react2.default.createElement(
-	            _reactBootstrap.Modal.Footer,
-	            null,
-	            _react2.default.createElement(
-	              _reactBootstrap.Button,
-	              { onClick: this.closeCategory },
-	              'Close'
+	                'Add New Category'
+	              )
 	            ),
 	            _react2.default.createElement(
-	              _reactBootstrap.Button,
-	              { type: 'submit' },
-	              'Add new category'
+	              _reactBootstrap.Modal.Body,
+	              null,
+	              _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                  _reactBootstrap.ControlLabel,
+	                  null,
+	                  'Category'
+	                ),
+	                _react2.default.createElement(_reactBootstrap.FormControl, { model: '.newCategory' })
+	              )
+	            ),
+	            _react2.default.createElement(
+	              _reactBootstrap.Modal.Footer,
+	              null,
+	              _react2.default.createElement(
+	                _reactBootstrap.Button,
+	                { onClick: this.closeCategory },
+	                'Close'
+	              ),
+	              _react2.default.createElement(
+	                _reactBootstrap.Button,
+	                { type: 'submit' },
+	                'Add new category'
+	              )
 	            )
 	          )
 	        )

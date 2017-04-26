@@ -12,7 +12,8 @@ export default React.createClass({
   getInitialState() {
     return {
       showAddSpending: false,
-      showAddCategory: false };
+      showAddCategory: false,
+      input: {} };
   },
 
   closeSpending() {
@@ -71,19 +72,21 @@ export default React.createClass({
 
           <Button onClick={this.openCategory}>Add Category</Button>
             <Modal show={this.state.showAddCategory} onHide={this.closeCategory}>
-              <Modal.Header closeButton>
-                <Modal.Title>Add New Category</Modal.Title>
-              </Modal.Header>
-              <Modal.Body>
-                <div>
-                  <ControlLabel>Category</ControlLabel>
-                  <FormControl model='.newCategory' />
-                </div>
-              </Modal.Body>
-              <Modal.Footer>
-                <Button onClick={this.closeCategory}>Close</Button>
-                <Button type='submit'>Add new category</Button>
-              </Modal.Footer>
+              <form onSubmit={this.onSubmit}>
+                <Modal.Header closeButton>
+                  <Modal.Title>Add New Category</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  <div>
+                    <ControlLabel>Category</ControlLabel>
+                    <FormControl model='.newCategory' />
+                  </div>
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button onClick={this.closeCategory}>Close</Button>
+                  <Button type='submit'>Add new category</Button>
+                </Modal.Footer>
+              </form>
             </Modal>
 
         </div>
