@@ -72,14 +72,14 @@ export default React.createClass({
 
           <Button onClick={this.openCategory}>Add Category</Button>
             <Modal show={this.state.showAddCategory} onHide={this.closeCategory}>
-              <form onSubmit={this.onSubmit}>
+              <form action="/" method="post">
                 <Modal.Header closeButton>
                   <Modal.Title>Add New Category</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                   <div>
-                    <ControlLabel>Category</ControlLabel>
-                    <FormControl model='.newCategory' />
+                    <ControlLabel>Category: </ControlLabel>
+                    <input name='newCategory' />
                   </div>
                 </Modal.Body>
                 <Modal.Footer>

@@ -1,8 +1,10 @@
-var express = require('express')
+const express = require('express')
 
-var db = require('../database')
+const db = require('../database')
 
-var router = express.Router()
+const router = express.Router()
+
+let nextId = 4
 
 router.get('/categories', function(req, res) {
   db.getCategories()
@@ -12,6 +14,20 @@ router.get('/categories', function(req, res) {
     .catch(function(err) {
       res.status(500).send('DATABASE ERROR: ' + err.message)
     })
+})
+
+router.post('/', function(req, res) {
+  const category = {
+    categoryId: nextId++,
+    categoryName: req.body.newCategory
+  }
+  db.addCategory(category, (error, category) => {
+    if (error) {
+      res.status(500).send(error)
+    } else {
+      res.json(category)
+    }
+  })
 })
 
 module.exports = router

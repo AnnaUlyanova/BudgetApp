@@ -29309,7 +29309,7 @@
 	          { show: this.state.showAddCategory, onHide: this.closeCategory },
 	          _react2.default.createElement(
 	            'form',
-	            { onSubmit: this.onSubmit },
+	            { action: '/', method: 'post' },
 	            _react2.default.createElement(
 	              _reactBootstrap.Modal.Header,
 	              { closeButton: true },
@@ -29328,9 +29328,9 @@
 	                _react2.default.createElement(
 	                  _reactBootstrap.ControlLabel,
 	                  null,
-	                  'Category'
+	                  'Category: '
 	                ),
-	                _react2.default.createElement(_reactBootstrap.FormControl, { model: '.newCategory' })
+	                _react2.default.createElement('input', { name: 'newCategory' })
 	              )
 	            ),
 	            _react2.default.createElement(

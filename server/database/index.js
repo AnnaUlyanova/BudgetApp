@@ -7,8 +7,11 @@ function getCategories () {
 function addCategory (category) {
   return knex('categories')
     .insert({
-      category_id: category.category_id,
-      category: category.category})
+      id: category.categoryId,
+      category_name: category.categoryName})
+    .catch(error => {
+      callback(error)
+    })
 }
 
 module.exports = {
