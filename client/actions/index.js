@@ -6,18 +6,15 @@ export const addNewCategory = category => {
     //   type: 'ADD_CATEGORY_PENDING'
     // })
     request.post('/')
-      .send(category)
+      .send( category )
       .end((error, response) => {
         if (error) {
-          dispatch(addCategoryFailure({
+          return dispatch(addCategoryFailure({
             message: error.message
           }))
         } else {
-            const category = response.database
-            dispatch ({
-              type: 'ADD_CATEGORY_SUCCESS',
-              category
-            })
+            const category = response.body
+            dispatch (addCategorySuccess({category}))
           }
       })
    }
@@ -29,3 +26,10 @@ export const addNewCategory = category => {
      category
    }
  }
+
+export const addCategorySuccess = ({ category }) => {
+  return {
+    type: 'ADD_CATEGORY_SUCCESS',
+    category
+  }
+}
