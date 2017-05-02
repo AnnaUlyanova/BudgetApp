@@ -17,16 +17,19 @@ router.get('/categories', function(req, res) {
 })
 
 router.post('/', function(req, res) {
-  const category = {
-    categoryId: nextId++,
-    categoryName: req.body.newCategory
-  }
-  db.addCategory(category, (error, category) => {
-    if (error) {
-      res.status(500).send(error)
-    } else {
-      res.json(category)
-    }
+  // const category = {
+  //   categoryId: nextId++,
+  //   categoryName: req.body.newCategory
+  // }
+  // db.addCategory(category, (error, category) => {
+  //   if (error) {
+  //     res.status(500).send(error)
+  //   } else {
+  //     res.json(category)
+  //   }
+  const category = req.body.newCategory
+  db.addCategory(category, (err, category) => {
+    res.status(201).json(category)
   })
 })
 

@@ -1,12 +1,12 @@
 import request from 'superagent'
 
-export const addNewCategory = category => {
+export const addNewCategory = (categoryId, categoryName) => {
   return dispatch => {
     // dispatch({
     //   type: 'ADD_CATEGORY_PENDING'
     // })
     request.post('/')
-      .send( category )
+      .send( {categoryName} )
       .end((error, response) => {
         if (error) {
           return dispatch(addCategoryFailure({
@@ -14,7 +14,7 @@ export const addNewCategory = category => {
           }))
         } else {
             const category = response.body
-            dispatch (addCategorySuccess({category}))
+            dispatch (addCategorySuccess({categoryName, category}))
           }
       })
    }

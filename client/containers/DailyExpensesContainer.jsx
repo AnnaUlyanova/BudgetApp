@@ -6,7 +6,7 @@ import { addNewCategory } from '../actions'
 
 const mapDispatchToProps = dispatch => {
   return {
-    addNewCategory: category => dispatch(addNewCategory(category))
+    addNewCategory: (categoryId, categoryName) => dispatch(addNewCategory(categoryId, categoryName))
   }
 }
 

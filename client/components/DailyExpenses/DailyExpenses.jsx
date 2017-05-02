@@ -38,10 +38,10 @@ export default React.createClass({
       showAddCategory: true });
   },
 
-  // handleSubmit(event) {
-  //   event.preventDefault()
-  //   window.alert('Hi')
-  // },
+  updateCategory(event) {
+    this.setState({category: event.target.value})
+    console.log(event.target.value)
+  },
 
   render() {
     return (
@@ -77,21 +77,21 @@ export default React.createClass({
 
           <Button onClick={this.openCategory}>Add Category</Button>
             <Modal show={this.state.showAddCategory} onHide={this.closeCategory}>
-              <form onSubmit={this.props.addNewCategory}>
+              <div>
                 <Modal.Header closeButton>
                   <Modal.Title>Add New Category</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                   <div>
                     <ControlLabel>Category: </ControlLabel>
-                    <input name='newCategory' />
+                    <input name='newCategory' onChange={this.updateCategory}/>
                   </div>
                 </Modal.Body>
                 <Modal.Footer>
                   <Button onClick={this.closeCategory}>Close</Button>
-                  <Button type='submit'>Add new category</Button>
+                  <Button onClick={() => this.props.addNewCategory(this.state.category)} type='submit'>Add new category</Button>
                 </Modal.Footer>
-              </form>
+              </div>
             </Modal>
 
         </div>

@@ -7,7 +7,7 @@ function getCategories () {
 function addCategory (category) {
   return knex('categories')
     .insert({
-      id: category.categoryId,
+      id: category.categoryId + 1,
       category_name: category.categoryName})
     .catch(error => {
       callback(error)
